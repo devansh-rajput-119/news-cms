@@ -1,0 +1,163 @@
+<h1 class="mb-4">Articles</h1>
+
+<a href="/articles/create" class="btn btn-success mb-3">
+    Create New Article
+</a>
+
+<form method="GET" action="/articles" class="mb-3">
+
+    <div class="input-group">
+
+        <input
+            type="text"
+            name="search"
+            class="form-control"
+            placeholder="Search articles..."
+            value="<%= search || '' %>">
+
+        <button
+            class="btn btn-primary"
+            type="submit">
+
+            Search
+
+        </button>
+
+    </div>
+
+</form>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Image</th>
+            <th>Views</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% articles.forEach(article=> { %>
+
+            <tr>
+
+                <td>
+                    <a href="/articles/<%= article.slug %>">
+                        <%= article.title %>
+                    </a>
+                </td>
+
+                <td>
+                    <%= article.category ? article.category.name : "No Category" %>
+                </td>
+
+                <td>
+                    <%= article.status %>
+                </td>
+
+                <td>
+
+                    <% if(article.featuredImage){ %>
+
+                        <img src="<%= article.featuredImage %>" width="80">
+
+                        <% } else { %>
+
+                            No Image
+
+                            <% } %>
+
+                </td>
+
+                <td>
+                    <%= article.views %>
+                </td>
+
+                <td>
+
+                    <a href="/articles/edit/<%= article._id %>" class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <form action="/articles/delete/<%= article._id %>" method="POST" style="display:inline;">
+
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Delete this article?')">
+
+                            Delete
+
+                        </button>
+
+                    </form>
+
+                </td>
+
+            </tr>
+
+            <% }) %>
+
+    </tbody>
+
+</table>
+
+<nav class="mt-4">
+
+    <ul class="pagination">
+
+        <% if(page > 1){ %>
+
+            <li class="page-item">
+
+                <a
+                  class="page-link"
+                  href="/articles?page=<%= page - 1 %>&search=<%= search %>">
+
+                    Previous
+
+                </a>
+
+            </li>
+
+        <% } %>
+
+        <% for(let i = 1; i <= totalPages; i++){ %>
+
+            <li
+              class="page-item <%= page === i ? 'active' : '' %>">
+
+                <a
+                  class="page-link"
+                  href="/articles?page=<%= i %>&search=<%= search %>">
+
+                    <%= i %>
+
+                </a>
+
+            </li>
+
+        <% } %>
+
+        <% if(page < totalPages){ %>
+
+            <li class="page-item">
+
+                <a
+                  class="page-link"
+                  href="/articles?page=<%= page + 1 %>&search=<%= search %>">
+
+                    Next
+
+                </a>
+
+            </li>
+
+        <% } %>
+
+    </ul>
+
+</nav>

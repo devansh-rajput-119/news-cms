@@ -1,0 +1,66 @@
+<h1 class="mb-4">Users</h1>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% users.forEach(user => { %>
+
+            <tr>
+
+                <td>
+                    <%= user.name %>
+                </td>
+
+                <td>
+                    <%= user.email %>
+                </td>
+
+                <td>
+                    <%= user.role %>
+                </td>
+
+                <td>
+
+    <% if(user._id.toString() !== locals.user.id){ %>
+
+        <form
+            action="/users/delete/<%= user._id %>"
+            method="POST"
+            style="display:inline;">
+
+            <button
+                type="submit"
+                class="btn btn-danger btn-sm"
+                onclick="return confirm('Delete this user?')">
+
+                Delete
+
+            </button>
+
+        </form>
+
+    <% } else { %>
+
+        Current User
+
+    <% } %>
+
+</td>
+
+            </tr>
+
+        <% }) %>
+
+    </tbody>
+
+</table>

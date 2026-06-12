@@ -1,0 +1,84 @@
+<h1 class="mb-4">Create Article</h1>
+
+<form
+    method="POST"
+    action="/articles/create"
+    enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input
+            type="text"
+            name="title"
+            class="form-control"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Content</label>
+
+        <textarea
+            name="content"
+            rows="8"
+            class="form-control"
+            required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Category</label>
+
+        <select
+            name="category"
+            class="form-select">
+
+            <% categories.forEach(category => { %>
+
+                <option value="<%= category._id %>">
+                    <%= category.name %>
+                </option>
+
+            <% }) %>
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+
+    <label class="form-label">
+        Featured Image
+    </label>
+
+    <input
+        type="file"
+        name="featuredImage"
+        class="form-control">
+
+</div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Status
+        </label>
+
+        <select
+            name="status"
+            class="form-select">
+
+            <option value="draft">
+                Draft
+            </option>
+
+            <option value="published">
+                Published
+            </option>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-success">
+        Publish Article
+    </button>
+
+</form>

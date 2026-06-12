@@ -1,0 +1,46 @@
+<h1 class="mb-4">Categories</h1>
+
+<form method="POST" action="/categories/create">
+
+    <div class="mb-3">
+        <input
+            type="text"
+            name="name"
+            class="form-control"
+            placeholder="Enter Category Name"
+            required>
+    </div>
+
+    <button class="btn btn-primary">
+        Add Category
+    </button>
+
+</form>
+
+<hr>
+
+<h3>All Categories</h3>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Slug</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% categories.forEach(category => { %>
+
+            <tr>
+                <td><%= category.name %></td>
+                <td><%= category.slug %></td>
+            </tr>
+
+        <% }) %>
+
+    </tbody>
+
+</table>

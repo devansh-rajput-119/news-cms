@@ -1,0 +1,48 @@
+<h1 class="mb-4">
+    Latest Articles
+</h1>
+
+<div class="row">
+
+    <% latestArticles.forEach(article=> { %>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100">
+
+                <% if(article.featuredImage){ %>
+
+                    <img src="<%= article.featuredImage %>" class="card-img-top"
+                        style="height: 200px; object-fit: cover;">
+
+                    <% } %>
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                <%= article.title %>
+                            </h5>
+
+                            <p>
+
+                                Category:
+
+                                <%= article.category ? article.category.name : "No Category" %>
+
+                            </p>
+
+                            <a href="/articles/<%= article.slug %>" class="btn btn-primary">
+
+                                Read More
+
+                            </a>
+
+                        </div>
+
+            </div>
+
+        </div>
+
+        <% }) %>
+
+</div>

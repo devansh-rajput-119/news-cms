@@ -1,0 +1,32 @@
+<h1><%= article.title %></h1>
+<% if (article.featuredImage) { %>
+
+    <img
+        src="<%= article.featuredImage %>"
+        class="img-fluid mb-3"
+        alt="<%= article.title %>">
+
+<% } %>
+
+<p>
+    Category:
+    <strong>
+        <%= article.category ?
+        article.category.name :
+        "No Category" %>
+    </strong>
+</p>
+
+<p>
+    Views: <%= article.views %>
+</p>
+
+<hr>
+
+<p>
+    <%= article.content %>
+</p>
+
+<a href="/articles" class="btn btn-secondary">
+    Back
+</a>

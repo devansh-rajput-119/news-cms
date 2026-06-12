@@ -1,0 +1,69 @@
+<h1 class="mb-4">
+    Author Dashboard
+</h1>
+
+<div class="row">
+
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Total Articles</h5>
+                <h2><%= totalArticles %></h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Published</h5>
+                <h2><%= publishedArticles %></h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Drafts</h5>
+                <h2><%= draftArticles %></h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr>
+
+<h3>Recent Articles</h3>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <% recentArticles.forEach(article => { %>
+
+            <tr>
+
+                <td>
+                    <%= article.title %>
+                </td>
+
+                <td>
+                    <%= article.status %>
+                </td>
+
+            </tr>
+
+        <% }) %>
+
+    </tbody>
+
+</table>
