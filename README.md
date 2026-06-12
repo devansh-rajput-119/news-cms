@@ -55,23 +55,28 @@ Create a .env file:
 PORT=3000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
+
 4. Run the project
 npm start
+
 📌 API / Modules
+
 🔐 Auth
 Register / Login
 Role-based access
+
 🗂️ Category
 Create category
 Edit category
 Delete category
+
 📰 Articles
 Create article
 Publish / Draft system
+
 Image upload support
 📈 Future Improvements
 🔍 Search & filter system
-🤖 AI-based article recommendation (your ML integration idea)
 📱 React frontend upgrade
 ☁️ Deployment (Render / AWS)
 📊 Analytics dashboard
